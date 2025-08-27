@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const pool = require('./db');
 const authRoutes = require('./routes/auth');
+const birthdaysRoutes = require('./routes/birthdays');
+const cardsRoutes = require('./routes/cards');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +27,8 @@ app.get('/test-db', async (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/birthdays', birthdaysRoutes);
+app.use('/cards', cardsRoutes);
 
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}`);
